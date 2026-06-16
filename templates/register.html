@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f0ede8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .icon-wrap {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #e8f0fb;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .icon-wrap svg {
+      width: 26px;
+      height: 26px;
+      stroke: #3b6bb5;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #1a1a18;
+      letter-spacing: -0.3px;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-header p {
+      font-size: 14px;
+      color: #888780;
+      font-weight: 300;
+    }
+
+    .fields-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #5f5e5a;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #1a1a18;
+      background: #f8f7f4;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      background: #ffffff;
+      border-color: #3b6bb5;
+      box-shadow: 0 0 0 3px rgba(59, 107, 181, 0.1);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      margin: 2rem 0 1.75rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background: #1a1a18;
+      color: #f8f7f4;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .submit-btn:hover {
+      background: #2c2c2a;
+    }
+
+    .submit-btn:active {
+      transform: scale(0.99);
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 13px;
+      color: #888780;
+    }
+
+    .login-link a {
+      color: #3b6bb5;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 4px;
+      transition: color 0.15s;
+    }
+
+    .login-link a:hover {
+      color: #1a1a18;
+    }
+
+    @media (max-width: 480px) {
+      .fields-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full-width {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  {% include 'public_header.html' %}
+
+  <div class="page-content">
+    <div class="card">
+
+      <div class="card-header">
+        <div class="icon-wrap">
+          <!-- user-plus icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <line x1="19" y1="8" x2="19" y2="14"/>
+            <line x1="22" y1="11" x2="16" y2="11"/>
+          </svg>
+        </div>
+        <h2>Create an account</h2>
+        <p>Fill in your details to get started</p>
+      </div>
+
+      <form method="POST">
+        {% csrf_token %}
+
+        <div class="fields-grid">
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name">
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="Your phone number">
+          </div>
+
+          <div class="field full-width">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+          </div>
+
+          <div class="field full-width">
+            <label for="place">Place</label>
+            <input type="text" id="place" name="place" placeholder="Your city or town">
+          </div>
+
+          <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Choose a username">
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password">
+          </div>
+
+        </div>
+
+        <hr class="divider">
+
+        <button type="submit" class="submit-btn">Create account</button>
+      </form>
+
+      <p class="login-link">
+        Already have an account?
+        <a href="{% url 'login_view' %}">Sign in</a>
+      </p>
+
+    </div>
+  </div>
+
+  {% include 'footer.html' %}
+
+</body>
+</html>
